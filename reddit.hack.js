@@ -178,7 +178,7 @@
   }
 
   function redditUrl(on) {
-    var url = "http://www.reddit.com/";
+    var url = "https://www.reddit.com/";
     var keys = function (object) {
       var ret = [];
       for (var prop in object) {
