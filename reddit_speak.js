@@ -31,9 +31,10 @@ function readable(string,lang){
         replace(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/g,"[url]").
         replace(/^    .*$/mg , "").
         replace( /\*\*([^\*]+)\*\*/g , "$1").
-        replace( /\*([^\*]+)\*/g , "$1").
-        replace( /(「|『)/g , " かっこ ").
-        replace( /(』|」)/g , " かっことじ ")
+        replace( /\*([^\*]+)\*/g , "$1")
+    
+        // replace( /(「|『)/g , " かっこ ").
+        // replace( /(』|」)/g , " かっことじ ")
         
     
     return norm;
