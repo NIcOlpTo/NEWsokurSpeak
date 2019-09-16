@@ -46,16 +46,6 @@ class CommentWatcher {
         });
     }
 
-    normalize(string){
-        var norm = string.
-            replace( /&gt;/ , "引用: ").
-            replace( /~~([^~]+)~~/ , "打ち消し $1 打ち消しおわり").
-            replace( /\[([^\[\]]+)\]\(.*?\)/ , "$1(link)").
-            replace( /^\#+/ , "見出し:")
-        
-        return norm;
-    }
-
     get_comments(sub,before,cb){
         var search = reddit.comments( "" , sub ).sort("new").limit(25);
         if(before != null){
@@ -99,7 +89,7 @@ class CommentWatcher {
                 }
                 res.data.children.forEach((e)=>{
                     var txt = e.data.title;
-                    ret.unshift( ["Post: " + txt, e.data.created_utc] );
+                    ret.unshift( ["New Post: " + txt, e.data.created_utc] );
                 });
                 cb( ret , ret_before );
                 // console.log( ret );

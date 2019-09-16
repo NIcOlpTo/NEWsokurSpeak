@@ -1,8 +1,10 @@
 
-const dic = [ ["Quote" , "引用" ] ,
-            ["Strike-line","打ち消し"],
-            ["Strike-line end","打ち消し終わり"],
-            ["Headline","見出し"] ];
+const dic = [
+    ["Quote" , "引用" ] ,
+    ["Strike-line","打ち消し"],
+    ["Strike-line end","打ち消し終わり"],
+    ["Headline","見出し"],
+];
 
 const dic_lang = {
     "en-US":0 ,
