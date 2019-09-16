@@ -25,7 +25,7 @@ function readable(string,lang){
         replace( /^&gt;/mg , `${tr("Quote",lang)}: `).
         replace( /~~([^~]+)~~/g ,
                  `${tr("Strike-line",lang)} $1 ${tr("Strike-line end",lang)}`).
-        replace( /\[([^\[\]]+)\]\(.*?\)/g , "$1").
+        replace( /\[(.*?)\]\(.*?\)/g , "$1").
         replace( /^\#+/mg , `${tr("Headline",lang)}: `).
         replace( /^\s*\* /mg , "").
         replace(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/g,"[url]").
