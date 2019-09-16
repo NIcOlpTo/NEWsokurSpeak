@@ -127,7 +127,8 @@ function start(){
             voice = voices[0];
         }
         console.log(voice.name);
-
+        synth.resume();
+        
         function loop(){
 
             if( running && !synth.pending && !synth.speaking){
