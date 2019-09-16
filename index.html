@@ -23,7 +23,7 @@
   <body onload="load()">
     <h1>Reddit サブレ新着 読み上げ垂れ流し</h1>
     <p>
-      新着投稿/コメントが来ると読み上げます。最初は直近の25件から読み出します。コメントが多いと間引かれます。
+      新着投稿/コメントが来ると読み上げます。コメントが多いと間引かれます。
     </p>
     
     <p>/r/<input id="subreddit" value="newsokur"></p>
@@ -36,6 +36,12 @@
     </form>
     
     <p>
+      最初に
+      <select name="first_read" id="first_read">
+        <option value="25">25</option>
+        <option value="1">1</option>
+      </select>件よみこむ
+      <span>　</span>
       速さ: <input id="speed" type="range" min="0.75" max="2.0" value="1.0" step="0.25"> x<span id="speed-disp">1.0</span>
     </p>
     

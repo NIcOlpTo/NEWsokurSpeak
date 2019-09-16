@@ -1,9 +1,10 @@
 class CommentWatcher {
 
-    constructor(sub){
+    constructor(sub,first_read){
         this.sub = sub;
         this.last_comment = null;
         this.last_post    = null;
+        this.first_read = first_read;
     }
 
     

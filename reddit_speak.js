@@ -25,7 +25,7 @@ function readable(string,lang){
         replace( /^&gt;/mg , `${tr("Quote",lang)}: `).
         replace( /~~([^~]+)~~/g ,
                  `${tr("Strike-line",lang)} $1 ${tr("Strike-line end",lang)}`).
-        replace( /\[([^\[\]]+)\]\(.*?\)/g , "$1(link)").
+        replace( /\[([^\[\]]+)\]\(.*?\)/g , "$1").
         replace( /^\#+/mg , `${tr("Headline",lang)}: `).
         replace( /^\s*\* /mg , "").
         replace(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/g,"[url]").
@@ -137,6 +137,7 @@ function start(){
         console.log(voice.name);
         synth.resume();
         
+        var first_read = true;
         function loop(){
 
             if( running && !synth.pending && !synth.speaking){
@@ -159,8 +160,15 @@ function start(){
             if(running && (queue.length < 5) ){
                 w.get( ret =>{
                     // ここでqueueにセットする
-                    var takenum = 25 - queue.length;
-                    if(takenum < 0) takenum = 0;
+                    var takenum;
+                    if(first_read){
+                        var si = document.getElementById("first_read").selectedIndex;
+                        var takenum = parseInt(document.getElementById("first_read").options[si].value);
+                        first_read = false;
+                    }else{
+                        var takenum = 25 - queue.length;
+                        if(takenum < 0) takenum = 0;
+                    }
                     var ret2 = ret.slice(0,takenum);
                     ret2.reverse().forEach((e)=>{
                         queue.unshift(e);
