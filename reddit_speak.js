@@ -73,7 +73,7 @@ function load2(){
     if( voice_local.length > 0 ){
         document.getElementById("start-button").disabled = false;
         document.getElementById("stop-button").disabled = true;
-        document.getElementById("subreddit").disabled = true;
+        document.getElementById("subreddit").disabled = false;
         mes("OK");
     } else {
         mes("利用できる音声合成が無いようです。なおGoogle WEB APIは、自動読み上げに制限があるため、このツールでは利用できません。ローカルな読み上げ機能のあるOS上で試してみてください。")

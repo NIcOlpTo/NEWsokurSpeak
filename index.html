@@ -25,18 +25,20 @@
     <p>
       新着投稿/コメントが来ると読み上げます。最初は直近の25件から読み出します。コメントが多いと間引かれます。
     </p>
-    <form id="form">
-      <p>/r/<input id="subreddit" value="newsokur"></p>
     
+    <p>/r/<input id="subreddit" value="newsokur"></p>
+    
+    <form id="form">
       <p>
         <label><input type="radio" name="lang" value="ja-JP" checked="checked">日本語</label>
         <label><input type="radio" name="lang" value="en-US">英語</label>
       </p>
-
-      <p>
-        速さ: <input id="speed" type="range" min="0.75" max="2.0" value="1.0" step="0.25"> x<span id="speed-disp">1.0</span>
-      </p>
     </form>
+    
+    <p>
+      速さ: <input id="speed" type="range" min="0.75" max="2.0" value="1.0" step="0.25"> x<span id="speed-disp">1.0</span>
+    </p>
+    
     <p>
       <button onclick="start()" id="start-button" disabled >▶開始</button>
       <button onclick="stop()" id="stop-button" disabled >■停止</button>
