@@ -29,8 +29,10 @@ function readable(string,lang){
         replace( /^\#+/mg , `${tr("Headline",lang)}: `).
         replace( /^\s*\* /mg , "").
         replace(/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/g,"[url]").
-        replace(/^    .*$/mg , "")
-        
+        replace(/^    .*$/mg , "").
+        replace( /\*\*([^\*]+)\*\*/g , "$1").
+        replace( /\*([^\*]+)\*/g , "$1")
+    
     return norm;
 }
 
