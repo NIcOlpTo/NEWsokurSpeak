@@ -16,7 +16,11 @@
       body { font-size:12pt; }
       #start-button, #stop-button {font-size:16pt; width:200pt, height:40pt;}
       #message {border-style:solid; border-width:1px; background-color:#dddddd;padding:1em}
+      h1{font-size:16pt;}
+      input{font-size:16pt;}
     </style>
+
+    <link rel="stylesheet" type="text/css" href="microtip.min.css">
     
   </head>
 
@@ -26,7 +30,7 @@
       新着投稿/コメントが来ると読み上げます。コメントが多いと間引かれます。
     </p>
     
-    <p>/r/<input id="subreddit" value="newsokur" title="合成できます。例:newsokur+lowlevelaware"></p>
+    <p>/r/<input id="subreddit" value="newsokur" > <span aria-label="合成できます。例:newsokur+lowlevelaware" data-microtip-position="bottom-left" role="tooltip">💡</span></p>
     
     <form id="form">
       <p>
