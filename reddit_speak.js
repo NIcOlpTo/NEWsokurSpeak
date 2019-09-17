@@ -51,26 +51,29 @@ var running = false;
 
 function load(){
     console.log("load()");
+    try{
+        document.getElementById("speed").addEventListener('input',()=>{
+            document.getElementById("speed-disp").innerHTML = document.getElementById("speed").value;
+        });
     
-    document.getElementById("speed").addEventListener('input',()=>{
-        document.getElementById("speed-disp").innerHTML = document.getElementById("speed").value;
-    });
-    
-    if ("speechSynthesis" in window) {
-        var vs = window.speechSynthesis.getVoices();
-        if(vs.length < 1){
-            /*
-            window.speechSynthesis.onvoiceschanged = ()=>{
+        if ("speechSynthesis" in window) {
+            var vs = window.speechSynthesis.getVoices();
+            if(vs.length < 1){
+                /*
+                  window.speechSynthesis.onvoiceschanged = ()=>{
+                  load2();
+                  }
+                */
+                mes("準備中…");
+                setTimeout(load2 , 2000);
+            }else{
                 load2();
             }
-            */
-            mes("準備中…");
-            setTimeout(load2 , 2000);
         }else{
-            load2();
+            mes("このブラウザは対応していないようです。");
         }
-    }else{
-        mes("このブラウザは対応していないようです。")
+    }catch(e){
+        mes("何かのエラー このブラウザは対応していないようです。");
     }
 }
 
