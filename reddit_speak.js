@@ -51,34 +51,23 @@ var running = false;
 
 function load(){
     console.log("load()");
-    try{
-        document.getElementById("speed").addEventListener('input',()=>{
-            document.getElementById("speed-disp").innerHTML = document.getElementById("speed").value;
-        });
+    document.getElementById("speed").addEventListener('input',()=>{
+        document.getElementById("speed-disp").innerHTML = document.getElementById("speed").value;
+    });
     
-        if ("speechSynthesis" in window) {
-            var vs = window.speechSynthesis.getVoices();
-            if(vs.length < 1){
-                /*
-                  window.speechSynthesis.onvoiceschanged = ()=>{
-                  load2();
-                  }
-                */
-                mes("準備中…");
-                setTimeout(load2 , 2000);
-            }else{
-                load2();
-            }
-        }else{
-            mes("このブラウザは対応していないようです。");
-        }
-    }catch(e){
-        mes("何かのエラー このブラウザは対応していないようです。");
+    if ("speechSynthesis" in window) {
+        mes("準備中…");
+        load2();
+    }else{
+        mes("このブラウザは対応していないようです。");
     }
+
 }
 
+var check_times = 0;
+
 function load2(){
-    console.log("load2()");
+    console.log(`load2() ${check_times}`);
     var voices = window.speechSynthesis.getVoices();
     var voice_local = voices.filter( v => !(v.name.match(/^Google/)) );
     if( voice_local.length > 0 ){
@@ -87,8 +76,12 @@ function load2(){
         document.getElementById("subreddit").disabled = false;
         mes("OK");
     } else {
-        mes("利用できる音声合成が無いようです。なおGoogle WEB APIは、自動読み上げに制限があるため、このツールでは利用できません。ローカルな読み上げ機能のあるOS上で試してみてください。")
-
+        check_times += 1;
+        if(check_times < 12 ){
+            setTimeout(load2 , 500);
+        } else {
+            mes("利用できる音声合成を見つけられません。なおGoogle WEB APIは、自動読み上げに制限があるため、このツールでは利用できません。ローカルな読み上げ機能のあるOS上で試してみてください。");
+        }
     }
 }
 
